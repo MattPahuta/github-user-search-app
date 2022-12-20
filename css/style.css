@@ -16,7 +16,7 @@
   --clr-dm-dark: #141D2F;
   --clr-dm-primary: #1E2A47; 
 /* 
-  font-family: 'Space Mono', monospace;
+  font-family , monospace;
   font-weights - 400 (reg), 700 (bold)
 */
   --ff-body: 'Space Mono', monospace;
@@ -56,7 +56,7 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 2em 1.5em;
   font-family: var(--ff-body);
   text-align: left;
   line-height: 1.6;
@@ -109,3 +109,4 @@ select {
 h1, h2, h3, h4 {
   line-height: 1.5;
 }
+

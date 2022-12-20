@@ -12,20 +12,78 @@
   <title>Frontend Mentor | GitHub user search app</title>
 </head>
 <body>
+  <div class="container">
+     <header>
+      <h1>devfinder</h1>
+      <div class="mode-container">
+        <span>Dark</span>
+        <!-- Light -->
+        <img src="./assets/icon-moon.svg" alt="Moon icon" class="mode-icon">
+      </div>
+     </header>
+     <main>
+      <section class="search-section">
+        <!-- Search form -->
+        <form action="">
+          <input type="text" placeholder="Search GitHub username...">
+          <button class="search-btn">Search</button>
+        </form>
+      </section>
 
-  devfinder
+      <section class="results-section">
 
-  Light
-  Dark
+        <div class="results-container">
 
-  Search GitHub username...
-  Search
+          <div class="user-infor__header">
+            <img src="" alt="" class="user-avatar">
+            <div class="user-meta">
+              <h2 id="user-name" class="user-name">The Octocat</h2>
+              <span id="user-handle" class="user-handle">@octocat</span>
+              <p>Joined <span id="user-joined-date">25 Jan 2011</span></p>
+            </div>
+          </div>
+          <p class="user-bio"></p>
 
-  Joined
+          <div class="github-meta">
+            <div class="meta-col">
+              <h3>Repos</h3>
+              <p class="meta-result">8</p>
+            </div>
+            <div class="meta-col">
+              <h3>Followers</h3>
+              <p class="meta-result">3938</p>
+            </div>
+            <div class="meta-col">
+              <h3> Following</h3>
+              <p class="meta-result">9</p>
+            </div>
+          </div>
 
-  Repos
-  Followers
-  Following
+          <div class="user-contact">
+            <div class="location">
+              <img src="./assets/icon-location.svg" alt="" class="icon-contact">
+              <p id="user-loaction">San Francisco</p>
+            </div>
+            <div class="website">
+              <img src="./assets/icon-website.svg" alt="" class="icon-contact">
+              <p id="user-website">https://github.blog</p>
+            </div>
+            <div class="twitter">
+              <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
+              <p id="user-twitter">Not Available</p>
+            </div>
+            <div class="company">
+              <img src="./assets/icon-company.svg" alt="" class="icon-contact">
+              <p id="user-company">@github</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+     </main>
+
+  </div>
+ 
 
   <script src="./js/app.js"></script>
 </body>
