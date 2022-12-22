@@ -4,7 +4,7 @@
 :root {
   /* colors */
   /* light-mode */
-  --clr-white: #FFFFFF;
+  --clr-white: #FEFEFE;
   --clr-offwhite: #F6F8FF;
   --clr-blue-primary: #0079FF; 
   --clr-gray: #697C9A;
@@ -139,7 +139,57 @@ h4 {
 /* Utility classes */
 .container {
   max-width: 730px;
-
+  width: 100%;
   border: 1px solid gray;
 }
 
+
+/* Header */
+.header {
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid green; */
+}
+
+.mode-container {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.mode-switch {
+  display: flex;
+  font-size: var(--fs-400);
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.mode-icon {
+  margin-left: 1rem;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Search section */
+.search-section {
+  margin-bottom: 1em;
+}
+
+.search-form {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  background-color: var(--clr-white);
+  border-radius: 15px;
+}
+
+.search-input {
+  border: none;
+}

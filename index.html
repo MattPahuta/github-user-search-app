@@ -13,19 +13,19 @@
 </head>
 <body>
   <div class="container">
-     <header>
+     <header class="header">
       <h1>devfinder</h1>
       <div class="mode-container">
-        <span>Dark</span>
-        <!-- Light -->
-        <img src="./assets/icon-moon.svg" alt="Moon icon" class="mode-icon">
+        <a href="#" id="mode-switch" class="mode-switch"><span>Dark</span> <img src="./assets/icon-moon.svg" alt="Moon icon" class="mode-icon"></a>
       </div>
      </header>
+
      <main>
       <section class="search-section">
         <!-- Search form -->
-        <form action="">
-          <input type="text" placeholder="Search GitHub username...">
+        <form class="search-form" action="">
+          <img src="./assets/icon-search.svg" alt="Search icon" class="search-icon">
+          <input class="search-input" type="text" placeholder="Search GitHub username...">
           <button class="search-btn">Search</button>
         </form>
       </section>
