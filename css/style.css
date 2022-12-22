@@ -22,23 +22,29 @@
   --ff-body: 'Space Mono', monospace;
 
   /* font sizes, weights, line-heights*/
-  /* H1 - 26px/700/38px line height */
+  /* 26px/700/38px line height */
   --fs-700: 1.625rem;
-
-  /* H2 - 22px/700/33px line height */
-  --fs-600: 1.375rem;
-
-  /* H3 - 16px/400/24px line height */
-  --fs-500: 1rem;
-
-  /* H4 - 13px/400/20px line height */
+  /* 16px */
+  --fs-600: 1rem;
+  /* Body - 13px/400/20px line height */
   --fs-400: 0.825rem;
-
-  /* Body - 15px/400/25px line */
-  --fs-300: 0.95rem;
+  /* 11px */
+  --fs-300: 0.7rem;
 
 }
 
+@media (min-width: 40em) {
+  :root {
+    /* 22px/700/33px line height */
+    --fs-600: 1.375rem;
+    /* 15px */
+    --fs-400: 0.938rem;
+    /* 13px */
+    --fs-300: 0.825rem;
+  }
+}
+
+ 
 /* ======================== */
 /* Reset and General Styles */
 /* ======================== */
@@ -63,6 +69,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: var(--clr-offwhite);
   color: var(--clr-lm-dark);
 }
@@ -98,15 +105,41 @@ select {
 
 /* Typography */
 
-.fw-700 {
-  font-weight: 700;
-}
-
-.fw-400 {
-  font-weight: 400;
-}
+.fw-700 { font-weight: 700; }
+.fw-400 { font-weight: 400; }
 
 h1, h2, h3, h4 {
   line-height: 1.5;
+}
+
+h1 {
+  font-size: var(--fs-700);
+}
+
+h2 {
+  font-size: var(--fs-600);
+}
+
+h3 {
+  font-size: var(--fs-400);
+}
+
+h4 {
+  font-size: var(--fs-300);
+}
+
+@media (min-width: 38em) {
+  h2 {
+    font-size: var(--fs-700);
+  }
+}
+
+
+
+/* Utility classes */
+.container {
+  max-width: 730px;
+
+  border: 1px solid gray;
 }
 
