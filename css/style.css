@@ -65,7 +65,7 @@ html {
 
 body {
   margin: 0;
-  padding: 2em 1.5em;
+  padding: 0 1.5em;
   font-family: var(--ff-body);
   text-align: left;
   line-height: 1.6;
@@ -73,6 +73,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: var(--clr-offwhite);
   color: var(--clr-blue-secondary);
 }
@@ -132,7 +133,11 @@ h4 {
   font-size: var(--fs-300);
 }
 
-@media (min-width: 38em) {
+@media (min-width: 40em) {
+  body {
+    padding: 0 6em;
+  }
+
   h2 {
     font-size: var(--fs-700);
   }
@@ -315,14 +320,38 @@ h4 {
   margin-top: 2rem;
   font-size: var(--fs-400);
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
+.contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
 .contact-item {
-  display: grid;
+  /* display: grid;
   gap: 1rem;
   grid-auto-flow: column;
-  grid-auto-columns: 10% auto;
+  grid-auto-columns: 10% auto; */
+  display: flex;
+  gap: 1rem;
+
+}
+
+.icon-contact {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+@media (min-width: 40em) {
+  .user-contact {
+    flex-direction: row;
+    gap: 4rem;
+  }
 }
 
