@@ -9,9 +9,6 @@
   --clr-blue-primary: #0079FF; 
   --clr-gray: #697C9A;
   --clr-blue-secondary: #4B6A9B;
-
-
-
   --clr-lm-dark: #2B3442;
   /* dark mode */
   /* active state search btn - both modes */
@@ -23,20 +20,17 @@
   font-weights - 400 (reg), 700 (bold)
 */
   --ff-body: 'Space Mono', monospace;
-
   /* font sizes, weights, line-heights*/
   /* 26px/700/38px line height */
   --fs-700: 1.625rem;
   /* 16px */
   --fs-600: 1rem;
-
   /* button - 14px */
   --fs-500: 0.875rem;
   /* Body - 13px/400/20px line height */
   --fs-400: 0.813rem;
   /* 11px */
   --fs-300: 0.7rem;
-
 }
 
 @media (min-width: 40em) {
@@ -149,7 +143,6 @@ h4 {
 }
 
 
-
 /* Utility classes */
 .container {
   max-width: 730px;
@@ -220,9 +213,6 @@ h4 {
 }
 
 /* Search section */
-/* .search-section {
-  margin-bottom: 1em;
-} */
 
 .search-form,
 .results-section {
@@ -268,15 +258,31 @@ h4 {
 }
 
 /* Results section */
+
 .results-section {
   padding: 2em 1.5em 3em;
-  /* border: 1px solid var(--clr-gray); */
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  grid-template-areas: 
+    'userAvatar userHeader'
+    'userBio userBio'
+    'userMeta userMeta'
+    'userContact userContact'
+  ;
+}
+
+@media (min-width: 56em) {
+   .results-section {
+
+  }
+
 }
 
 .user-info__header {
+  margin-left: 1.125em;
   display: flex;
   gap: 19px;
-
+  grid-area: userHeader;
 }
 
 .user-name {
@@ -296,6 +302,7 @@ h4 {
   height: 70px;
   border-radius: 50%;
   background-color: var(--clr-blue-primary);
+  grid-area: userAvatar;
 }
 
 @media (min-width: 40em) {
@@ -310,6 +317,10 @@ h4 {
     font-size: var(--fs-500);
   }
 
+}
+
+.bio-container {
+  grid-area: userBio;
 }
 
 .user-bio {
@@ -328,6 +339,8 @@ h4 {
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
   gap: 1rem;
+
+  grid-area: userMeta;
 }
 
 
@@ -354,6 +367,7 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  grid-area: userContact;
 }
 
 .contact-col {
