@@ -263,6 +263,7 @@ h4 {
   padding: 2em 1.5em 3em;
   display: grid;
   grid-template-columns: 25% 1fr;
+  column-gap: 1em;
   grid-template-areas: 
     'userAvatar userHeader'
     'userBio userBio'
@@ -271,17 +272,10 @@ h4 {
   ;
 }
 
-@media (min-width: 56em) {
-   .results-section {
 
-  }
-
-}
 
 .user-info__header {
-  margin-left: 1.125em;
   display: flex;
-  gap: 19px;
   grid-area: userHeader;
 }
 
@@ -311,12 +305,32 @@ h4 {
     height: 117px;
   }
   .user-info__header {
-    gap: 2.5em;
+    padding-left: 1em;
   }
   .user-handle {
     font-size: var(--fs-500);
   }
 
+}
+
+@media (min-width: 56em) {
+  .results-section {
+     grid-template-areas: 
+     'userAvatar userHeader'
+     '. userBio'
+     '. userMeta'
+     '. userContact'
+   ;
+ }
+ .user-info__header {
+    padding-left: 0;
+  }
+  .user-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
 }
 
 .bio-container {
@@ -401,9 +415,12 @@ h4 {
   .meta-col {
     text-align: left;
   }
+
+}
+
+@media (min-width: 44em) {
   .user-contact {
     flex-direction: row;
     gap: 4rem;
   }
 }
-
