@@ -258,11 +258,6 @@ h4 {
 }
 
 
-
-
-
-
-
 /* Results section */
 
 .results-section {
@@ -278,17 +273,10 @@ h4 {
   background-color: var(--clr-blue-primary);
 }
 
-.user-avatar {
-
-}
-
-.user-info-container {
-
-}
-
 
 .user-info__header {
   display: flex;
+  gap: 1.125em;
 }
 
 .user-name {
@@ -319,8 +307,9 @@ h4 {
     height: 117px;
   }
   .user-info__header {
-    padding-left: 1em;
+    gap: 2.25em;
   }
+
   .user-handle {
     font-size: var(--fs-500);
   }
@@ -329,7 +318,6 @@ h4 {
 
 @media (min-width: 56em) {
   .results-section {
-    flex-direction: row;
     gap: 2.25em;
   }
   .user-avatar {
@@ -344,11 +332,13 @@ h4 {
     align-items: flex-start;
     width: 100%;
   }
+
+  .user-info-container {
+    margin-left: 9rem;
+  }
+
 }
 
-.bio-container {
-  grid-area: userBio;
-}
 
 .user-bio {
   margin-top: 2rem;
@@ -432,3 +422,6 @@ h4 {
     gap: 4rem;
   }
 }
+
+
+/*** Dark Mode Styles/Classes ***/

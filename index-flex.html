@@ -32,25 +32,28 @@
 
       <!-- Search Results Section-->
       <section class="results-section">
+        <div class="user-info__header">
 
-        <figure class="avatar-container">
-          <img src="" alt="" class="user-avatar">
-        </figure>
+          <div class="avatar-container">
+            <img src="" alt="" class="user-avatar">
+          </div>
+
+          <div class="user-meta">
+            <!-- flex container -->
+            <div class="user-name-container">
+              <h2 id="user-name" class="user-name fw-700">The Octocat</h2>
+              <a href="#" id="user-handle" class="user-handle fw-400">@octocat</a>
+            </div>
+            <p>Joined <span id="user-joined-date">25 Jan 2011</span></p>
+          </div>
+
+        </div>
+
         <!-- user info header and user bio -->
         <div class="user-info-container">
-          <div class="user-info__header">
-            <div class="user-meta">
-              <div class="user__name-container">
-                <h2 id="user-name" class="user-name fw-700">The Octocat</h2>
-                <h3 id="user-handle" class="user-handle fw-400">@octocat</h3>
-              </div>
-              <p>Joined <span id="user-joined-date">25 Jan 2011</span></p>
-            </div>
-          </div>
-          <div class="bio-container">
-            <p class="user-bio">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>
-          </div>
-
+          <!-- user bio/summary -->
+          <p class="user-bio">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>
+          <!-- github metadata -->
           <div class="github-meta">
             <div class="meta-col">
               <h4 class="fw-400">Repos</h4>
@@ -66,6 +69,25 @@
             </div>
           </div>
   
+          <!-- <ul class="user-contact">
+            <li>
+              <img src="./assets/icon-location.svg" alt="" class="icon-contact">
+              <p id="user-loaction">San Francisco</p>
+            </li>
+            <li>
+              <img src="./assets/icon-website.svg" alt="" class="icon-contact">
+              <a href="#" id="user-website">https://github.blog</a>
+            </li>
+            <li>
+              <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
+              <a href="#" id="user-twitter">Not Available</a>
+            </li>
+            <li>
+              <img src="./assets/icon-company.svg" alt="" class="icon-contact">
+              <a href="#" id="user-company">@github</a>
+            </li>
+          </ul> -->
+
           <div class="user-contact">
             <!-- left col - tablet/desktop -->
             <div class="contact-col">
@@ -75,18 +97,18 @@
               </div>
               <div class="contact-item">
                 <img src="./assets/icon-website.svg" alt="" class="icon-contact">
-                <p id="user-website">https://github.blog</p>
+                <a href="#" id="user-website">https://github.blog</a>
               </div>
             </div>
             <!-- right col - tablet/desktop -->
             <div class="contact-col">
               <div class="contact-item">
                 <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
-                <p id="user-twitter">Not Available</p>
+                <a href="#" id="user-twitter">Not Available</a>
               </div>
               <div class="contact-item">
                 <img src="./assets/icon-company.svg" alt="" class="icon-contact">
-                <p id="user-company">@github</p>
+                <a href="#" id="user-company">@github</a>
               </div>
             </div>
           </div>
