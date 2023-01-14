@@ -3,95 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/styles.css">
   <title>Frontend Mentor | GitHub user search app</title>
 </head>
 <body>
   <div class="container">
-     <header class="header">
-      <h1>devfinder</h1>
-      <div class="mode-container">
-        <a href="#" id="mode-switch" class="mode-switch"><span>Dark</span> <img src="./assets/icon-moon.svg" alt="Moon icon" class="mode-icon"></a>
-      </div>
-     </header>
+    <header class="header">
+    <h1>devfinder</h1>
+    <div class="mode-container">
+      <a href="#" id="mode-switch" class="mode-switch"><span>Dark</span> <img src="./assets/icon-moon.svg" alt="Moon icon" class="mode-icon"></a>
+    </div>
+    </header>
 
-     <main>
+    <main>
       <!-- Search form -->
-      <form class="search-form" action="">
-        <div class="input-container">
-          <img src="./assets/icon-search.svg" alt="Search icon" class="search-icon">
-          <input class="search-input" type="text" placeholder="Search GitHub username...">
-        </div>
+      <div class="search-group" action="">
+        <img src="./assets/icon-search.svg" alt="Search icon" class="search-icon">
+
+        <input class="search-input" type="text" placeholder="Search GitHub username...">
+        <span class="error-text">No results</span>
         <button class="btn search-btn">Search</button>
-      </form>
-
+      </div>
+      <!-- Search Results Section-->
       <section class="results-section">
-        <div class="avatar-container">
-          <!-- set user avatar to bg -->
-          <!-- <img src="" alt="" class="user-avatar"> -->
-        </div>
-
         <div class="user-info__header">
+          <img src="./assets/octocat.png" alt="" id="user-avatar" class="user-avatar">
           <div class="user-meta">
-            <div class="user__name-container">
+            <!-- flex container -->
+            <div class="user-name-container">
               <h2 id="user-name" class="user-name fw-700">The Octocat</h2>
-              <h3 id="user-handle" class="user-handle fw-400">@octocat</h3>
+              <a href="#" id="user-handle" class="user-handle fw-400">@octocat</a>
             </div>
             <p>Joined <span id="user-joined-date">25 Jan 2011</span></p>
           </div>
         </div>
-
-        <div class="bio-container">
+        <!-- user info header and user bio -->
+        <div class="user-info-container">
+          <!-- user bio/summary -->
           <p class="user-bio">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>
-        </div>
+          <!-- github metadata -->
+          <div class="github-meta">
+            <div class="meta-col">
+              <h4 class="fw-400">Repos</h4>
+              <p class="meta-result fw-700">8</p>
+            </div>
+            <div class="meta-col">
+              <h4 class="fw-400">Followers</h4>
+              <p class="meta-result fw-700">3938</p>
+            </div>
+            <div class="meta-col">
+              <h4 class="fw-400"> Following</h4>
+              <p class="meta-result fw-700">9</p>
+            </div>
+          </div>
 
-        <div class="github-meta">
-          <div class="meta-col">
-            <h4 class="fw-400">Repos</h4>
-            <p class="meta-result fw-700">8</p>
-          </div>
-          <div class="meta-col">
-            <h4 class="fw-400">Followers</h4>
-            <p class="meta-result fw-700">3938</p>
-          </div>
-          <div class="meta-col">
-            <h4 class="fw-400"> Following</h4>
-            <p class="meta-result fw-700">9</p>
-          </div>
-        </div>
-
-        <div class="user-contact">
-          <!-- left col - tablet/desktop -->
-          <div class="contact-col">
-            <div class="contact-item">
+          <!-- <ul class="user-contact">
+            <li>
               <img src="./assets/icon-location.svg" alt="" class="icon-contact">
               <p id="user-loaction">San Francisco</p>
-            </div>
-            <div class="contact-item">
+            </li>
+            <li>
               <img src="./assets/icon-website.svg" alt="" class="icon-contact">
-              <p id="user-website">https://github.blog</p>
-            </div>
-          </div>
-          <!-- right col - tablet/desktop -->
-          <div class="contact-col">
-            <div class="contact-item">
+              <a href="#" id="user-website">https://github.blog</a>
+            </li>
+            <li>
               <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
-              <p id="user-twitter">Not Available</p>
-            </div>
-            <div class="contact-item">
+              <a href="#" id="user-twitter">Not Available</a>
+            </li>
+            <li>
               <img src="./assets/icon-company.svg" alt="" class="icon-contact">
-              <p id="user-company">@github</p>
+              <a href="#" id="user-company">@github</a>
+            </li>
+          </ul> -->
+
+          <div class="user-contact">
+            <!-- left col - tablet/desktop -->
+            <div class="contact-col">
+              <div class="contact-item">
+                <img src="./assets/icon-location.svg" alt="" class="icon-contact">
+                <p id="user-loaction">San Francisco</p>
+              </div>
+              <div class="contact-item">
+                <img src="./assets/icon-website.svg" alt="" class="icon-contact">
+                <a href="#" id="user-website">https://github.blog</a>
+              </div>
+            </div>
+            <!-- right col - tablet/desktop -->
+            <div class="contact-col">
+              <div class="contact-item">
+                <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
+                <a href="#" id="user-twitter">Not Available</a>
+              </div>
+              <div class="contact-item">
+                <img src="./assets/icon-company.svg" alt="" class="icon-contact">
+                <a href="#" id="user-company">@github</a>
+              </div>
             </div>
           </div>
+
         </div>
 
       </section>
-     </main>
+    </main>
 
   </div>
  
