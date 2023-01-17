@@ -35,7 +35,7 @@
   --fs-300: 0.7rem;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 38em) {
   :root {
     /* 22px/700/33px line height */
     --fs-600: 1.375rem;
@@ -231,6 +231,7 @@ h4 {
 }
 
 .search-input {
+  /* make width 25% (mobile) when error text displays */
   width: 100%;
   border: none;
 }
@@ -242,11 +243,10 @@ h4 {
 }
 
 .error-text {
-  /* display: none; */
+  display: none;
   font-size: 15px;
   line-height: 22.22px;
   color: #F74646;
-
 }
 
 @media (min-width: 40em) {
@@ -256,9 +256,9 @@ h4 {
   .search-icon {
     margin-right: 0;
   }
-  .search-input {
+  /* .search-input {
     width: 60%;
-  }
+  } */
   .search-input::placeholder {
     font-size: 18px;
   }
@@ -289,6 +289,11 @@ h4 {
 
 .user-handle {
   color: var(--clr-blue-primary);
+  text-decoration: none;
+}
+
+.user-handle:hover {
+  text-decoration: underline;
 }
 
 .user-meta > p {
@@ -332,7 +337,6 @@ h4 {
 
 }
 
-
 .user-bio {
   margin-top: 2rem;
   font-size: var(--fs-400);
@@ -353,11 +357,9 @@ h4 {
   grid-area: userMeta;
 }
 
-
 .meta-col {
   text-align: center;
 }
-
 
 .meta-col > h4 {
   margin-bottom: .4em;
@@ -370,26 +372,30 @@ h4 {
 
 
 /* User contact */
-.user-contact {
+
+.contact-list {
   margin-top: 2rem;
+  padding: 0;
   font-size: var(--fs-400);
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  grid-area: userContact;
+
+  list-style: none;
 }
 
-.contact-col {
+.contact-list-item {
   display: flex;
-  flex-direction: column;
   gap: 1rem;
 }
 
+.contact-link {
+  text-decoration: none;
+  color: var(--clr-blue-secondary);
+}
 
-.contact-item {
-  display: flex;
-  gap: 1rem;
+.contact-link:hover {
+  text-decoration: underline;
 }
 
 .icon-contact {
@@ -398,23 +404,35 @@ h4 {
   object-fit: contain;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 38em) {
+  
   .github-meta {
     margin-top: 2em;
     padding: 1em 2em;
   }
+
   .meta-col {
     text-align: left;
   }
 
+
+
 }
 
-@media (min-width: 44em) {
-  .user-contact {
+@media (min-width: 42em) {
+  .contact-list {
     flex-direction: row;
-    gap: 4rem;
+    flex-wrap: wrap;
   }
-}
 
+  .contact-list-item {
+    width: 48%;
+  }
+
+  .location { order: 1 }
+  .website { order: 3 }
+  .twitter { order: 2 }
+  .company { order: 4 }
+}
 
 /*** Dark Mode Styles/Classes ***/
