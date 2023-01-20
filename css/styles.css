@@ -288,12 +288,12 @@ h4 {
   color: var(--clr-lm-dark);
 }
 
-.user-handle {
+.user-github__link {
   color: var(--clr-blue-primary);
   text-decoration: none;
 }
 
-.user-handle:hover {
+.user-github__link:hover {
   text-decoration: underline;
 }
 
@@ -310,7 +310,7 @@ h4 {
   .user-avatar {
     max-width: 117px;
   }
-  .user-handle {
+  .user-github__link {
     font-size: var(--fs-500);
   }
 
