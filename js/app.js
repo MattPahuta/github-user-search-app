@@ -36,29 +36,68 @@ async function fetchGitHubData(devname) {
 // handle html for data returned from fetchGitHubData function
 function displayUserInfo(data) {
 
-  const {avatar_url, name, login, html_url, created_at, bio, public_repos, followers, following, location, twitter_username, blog, company } = data;
+  let {avatar_url, name, login, html_url, created_at, bio, public_repos, followers, following, location, twitter_username, blog, company } = data;
 
-  const resultsHeader = document.querySelector('.user-info__header');
+  const resultsSection = document.querySelector('.results-section');
+  // Account for null values in data:
+  if (bio === null) bio = 'This dev has no bio listed.';
+  if (location === null) location = 'Not Available';
+  if (twitter_username === null) twitter_username = 'Not Available';
+  if (company === null) company = 'Not Available';
+  if (blog === null) blog = 'Not Available';
 
-  resultsHeader.innerHTML = `
-
+  resultsSection.innerHTML = `
+    <div class="user-info__header">
       <img src="${avatar_url}" alt="" id="user-avatar" class="user-avatar">
       <div class="user-meta">
         <div class="user-name-container">
           <h2 id="user-name" class="user-name fw-700">${name}</h2>
           <a href="${html_url}" target="_blank" id="user-github__link" class="user-github__link fw-400">@${login}</a>
         </div>
-        <p>Joined <span id="user-joined__date">Joined ${created_at}</span></p>
+        <span id="user-joined__date">Joined ${created_at}</span>
       </div>
-
+    </div>
   
-  
+    <div class="user-info-container">
+      <p class="user-bio">${bio}</p>
+      <div class="github-meta">
+        <div class="meta-col">
+          <h4 class="fw-400">Repos</h4>
+          <p class="meta-result fw-700">${public_repos}</p>
+        </div>
+        <div class="meta-col">
+          <h4 class="fw-400">Followers</h4>
+          <p class="meta-result fw-700">${followers}</p>
+        </div>
+        <div class="meta-col">
+          <h4 class="fw-400"> Following</h4>
+          <p class="meta-result fw-700">${following}</p>
+        </div>
+      </div>
+      <ul class="contact-list">
+        <li class="contact-list-item location">
+          <img src="./assets/icon-location.svg" alt="" class="icon-contact">
+          <p id="user-loaction">${location}</p>
+        </li>
+        <li class="contact-list-item website">
+          <img src="./assets/icon-website.svg" alt="" class="icon-contact">
+          <a class="contact-link" href="#" id="user-website">${blog}</a>
+        </li>
+        <li class="contact-list-item twitter">
+          <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
+          <a class="contact-link" href="#" id="user-twitter">${twitter_username}</a>
+        </li>
+        <li class="contact-list-item company">
+          <img src="./assets/icon-company.svg" alt="" class="icon-contact">
+          <a class="contact-link" href="#" id="user-company">${company}</a>
+        </li>
+      </ul>
+    </div>
   `
-
-  // const userAvatar = document.querySelector('#user-avatar');
-  // const userName = document.querySelector('#user-name');
-  // const userLink = document.querySelector('#user-github__link');
-  // const userJoined = document.querySelector('#user-joined__date');
+  // apply 50% opacity if contact data null
+  if (twitter_username === 'Not Available') {
+    document.querySelector('.twitter').classList.add('not-available');
+  }
 
 
 
@@ -85,6 +124,9 @@ searchBtn.addEventListener('click', () => {
   fetchGitHubData(devname)
   searchInput.value = ''; // clear input after click
 })
+
+// Default user on load
+fetchGitHubData('octocat')
 
 // searchUser.addEventListener('keyup', (e) => {
 //   const userText = e.target.value; // get input text
