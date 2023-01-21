@@ -40,11 +40,7 @@ function displayUserInfo(data) {
 
   const resultsSection = document.querySelector('.results-section');
   // Account for null values in data:
-  if (bio === null) bio = 'This dev has no bio listed.';
-  if (location === null) location = 'Not Available';
-  if (twitter_username === null) twitter_username = 'Not Available';
-  if (company === null) company = 'Not Available';
-  if (blog === null) blog = 'Not Available';
+  if (bio === null || bio === '') bio = 'This dev has no bio listed.';
 
   resultsSection.innerHTML = `
     <div class="user-info__header">
@@ -77,29 +73,48 @@ function displayUserInfo(data) {
       <ul class="contact-list">
         <li class="contact-list-item location">
           <img src="./assets/icon-location.svg" alt="" class="icon-contact">
-          <p id="user-loaction">${location}</p>
+          ${displayContactItem(location)}
         </li>
         <li class="contact-list-item website">
           <img src="./assets/icon-website.svg" alt="" class="icon-contact">
-          <a class="contact-link" href="#" id="user-website">${blog}</a>
+          ${displayContactItem(blog)}
         </li>
         <li class="contact-list-item twitter">
           <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
-          <a class="contact-link" href="#" id="user-twitter">${twitter_username}</a>
+          ${displayContactItem(twitter_username)}
         </li>
         <li class="contact-list-item company">
           <img src="./assets/icon-company.svg" alt="" class="icon-contact">
-          <a class="contact-link" href="#" id="user-company">${company}</a>
+          ${displayContactItem(company)}
         </li>
       </ul>
     </div>
   `
-  // apply 50% opacity if contact data null
-  if (twitter_username === 'Not Available') {
-    document.querySelector('.twitter').classList.add('not-available');
-  }
 
+  // apply proper list item to contact list
+  function displayContactItem(item) {
+    let html = '';
 
+    switch (item) {
+      case null:
+      case '':
+        html = `<p class="not-available">Not Available</p>`;
+        break;
+      case location:
+      case company:
+        html = `<p>${item}</p>`;
+        break;
+      case blog:
+        html = `<a class="contact-link" href="${item}" target="_blank">${item}</a>`;
+        break;
+      case twitter_username:
+        html = `<a class="contact-link" href="https://twitter.com/${item}" id="user-twitter">${item}</a>`
+        break;
+    }
+
+    return html;  
+
+}
 
   console.log('Avatar URL: ', avatar_url)
   console.log('User Name: ',  name)
@@ -115,6 +130,9 @@ function displayUserInfo(data) {
   console.log('Blog: ', blog) // if null, 'Not Available'
   console.log('Company: ', company) // if null, 'Not Available'
 }
+
+
+
 
 // event listeners
 // searchBtn.addEventListener('click', fetchGitHubData);

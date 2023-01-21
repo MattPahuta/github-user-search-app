@@ -156,6 +156,7 @@ h4 {
 
 }
 
+/* Special Utility */
 .not-available {
   opacity: 0.5;
 }
@@ -448,5 +449,9 @@ h4 {
   .twitter { order: 2 }
   .company { order: 4 }
 }
+
+
+
+
 
 /*** Dark Mode Styles/Classes ***/
