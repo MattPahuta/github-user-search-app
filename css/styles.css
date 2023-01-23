@@ -219,7 +219,7 @@ h4 {
 /* Search section */
 
 .search-group,
-.results-section {
+.gh-results-grid {
   background-color: var(--clr-white);
   box-shadow: var(--box-shadow);
   border-radius: 15px;
@@ -276,18 +276,24 @@ h4 {
 
 
 /* Results section */
-.results-section {
+.gh-results-grid {
   padding: 2em 1.5em 3em;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  align-items: start;
 }
 
-.user-info__header {
+.gh-info__bio,
+.gh-info__data {
+  grid-column: span 2;
+}
+
+.gh-info__header {
   display: flex;
   gap: 1.125em;
 }
 
-.user-avatar {
+.gh-user__avatar {
   max-width: 70px;
   border-radius: 50%;
   object-fit: contain;
@@ -295,16 +301,16 @@ h4 {
 
 
 
-.user-name {
+.gh-user__name {
   color: var(--clr-lm-dark);
 }
 
-.user-github__link {
+.gh-user__link {
   color: var(--clr-blue-primary);
   text-decoration: none;
 }
 
-.user-github__link:hover {
+.gh-user__link:hover {
   text-decoration: underline;
 }
 
@@ -312,27 +318,40 @@ h4 {
   font-size: var(--fs-400);
 }
 
+.gh-user__bio {
+  font-size: var(--fs-400);
+}
 
 @media (min-width: 40em) {
 
-  .user-info__header {
+  .gh-info__header {
     gap: 2.25em;
   }
-  .user-avatar {
+  .gh-user__avatar {
     max-width: 117px;
   }
-  .user-github__link {
+  .gh-user__link {
     font-size: var(--fs-500);
   }
 
 }
 
 @media (min-width: 56em) {
-  .results-section {
+  .gh-results-grid {
     padding: 3em;
-    gap: 2.25em;
+    column-gap: 2.25em;
   }
-  .user-info__header {
+
+  .gh-info__image {
+    grid-row: span 3;
+  }
+
+  .gh-info__bio,
+  .gh-info__data {  
+    grid-column: 2 / 3;
+  }
+
+  .gh-info__header {
     padding-left: 0;
   }
   .user-meta {
@@ -341,24 +360,12 @@ h4 {
     align-items: flex-start;
     width: 100%;
   }
-  .user-name-container {
-    width: 60%;
-  }
 
-  .user-info-container {
-    margin-top: -6rem;
-    margin-left: 9.7rem;
-  }
 
-}
-
-.user-bio {
-  margin-top: 2rem;
-  font-size: var(--fs-400);
 }
 
 /* Github meta */
-.github-meta {
+.gh-user__meta {
   margin-top: 1.5em;
   padding: 1.2em 0.875em;
   background: var(--clr-offwhite);
@@ -388,7 +395,7 @@ h4 {
 
 /* User contact */
 
-.contact-list {
+.gh-user__contact-list{
   margin-top: 2rem;
   padding: 0;
   font-size: var(--fs-400);
@@ -398,7 +405,7 @@ h4 {
   list-style: none;
 }
 
-.contact-list-item {
+.gh-contact__list-item {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -421,7 +428,7 @@ h4 {
 
 @media (min-width: 38em) {
   
-  .github-meta {
+  .gh-user__meta {
     margin-top: 2em;
     padding: 1em 2em;
   }
@@ -434,14 +441,14 @@ h4 {
 }
 
 @media (min-width: 42em) {
-  .contact-list {
+  .gh-user__contact-list{
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
   }
 
-  .contact-list-item {
-    width: 48%;
+  .gh-contact__list-item {
+    min-width: 48%;
   }
 
   .location { order: 1 }
@@ -449,9 +456,3 @@ h4 {
   .twitter { order: 2 }
   .company { order: 4 }
 }
-
-
-
-
-
-/*** Dark Mode Styles/Classes ***/

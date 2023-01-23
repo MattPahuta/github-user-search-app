@@ -38,25 +38,31 @@ function displayUserInfo(data) {
 
   let {avatar_url, name, login, html_url, created_at, bio, public_repos, followers, following, location, twitter_username, blog, company } = data;
 
-  const resultsSection = document.querySelector('.results-section');
+  const gitHubResults = document.querySelector('.gh-results-grid');
   // Account for null values in data:
   if (bio === null || bio === '') bio = 'This dev has no bio listed.';
 
-  resultsSection.innerHTML = `
-    <div class="user-info__header">
-      <img src="${avatar_url}" alt="" id="user-avatar" class="user-avatar">
-      <div class="user-meta">
-        <div class="user-name-container">
-          <h2 id="user-name" class="user-name fw-700">${name}</h2>
-          <a href="${html_url}" target="_blank" id="user-github__link" class="user-github__link fw-400">@${login}</a>
-        </div>
-        <span id="user-joined__date">Joined ${created_at}</span>
+  // ToDo: add dynamic alt attribute for user avatar
+  gitHubResults.innerHTML = `
+    <div class="gh-info__image">
+      <img src="${avatar_url}" alt="github user avatar" class="gh-user__avatar">
+    </div>
+
+    <div class="gh-info__header">
+      <div class="user-name-container">
+        <h2 class="gh-user__name fw-700">${name}</h2>
+        <a href="${html_url}" target="_blank" class="gh-user__link fw-400">@${login}</a>
       </div>
+      <span id="user-joined__date">Joined ${created_at}</span>
     </div>
   
-    <div class="user-info-container">
-      <p class="user-bio">${bio}</p>
-      <div class="github-meta">
+    <div class="gh-info__bio">
+      <p class="gh-user__bio">${bio}.</p>
+    </div>
+
+    <div class="gh-info__data">
+
+      <div class="gh-user__meta">
         <div class="meta-col">
           <h4 class="fw-400">Repos</h4>
           <p class="meta-result fw-700">${public_repos}</p>
@@ -70,21 +76,22 @@ function displayUserInfo(data) {
           <p class="meta-result fw-700">${following}</p>
         </div>
       </div>
-      <ul class="contact-list">
-        <li class="contact-list-item location">
-          <img src="./assets/icon-location.svg" alt="" class="icon-contact">
+
+      <ul class="gh-user__contact-list">
+        <li class="gh-contact__list-item location">
+          <img src="./assets/icon-location.svg" alt="icon" class="icon-contact">
           ${displayContactItem(location)}
         </li>
-        <li class="contact-list-item website">
-          <img src="./assets/icon-website.svg" alt="" class="icon-contact">
+        <li class="gh-contact__list-item website">
+          <img src="./assets/icon-website.svg" alt="icon" class="icon-contact">
           ${displayContactItem(blog)}
         </li>
-        <li class="contact-list-item twitter">
-          <img src="./assets/icon-twitter.svg" alt="" class="icon-contact">
+        <li class="gh-contact__list-item twitter">
+          <img src="./assets/icon-twitter.svg" alt="icon" class="icon-contact">
           ${displayContactItem(twitter_username)}
         </li>
-        <li class="contact-list-item company">
-          <img src="./assets/icon-company.svg" alt="" class="icon-contact">
+        <li class="gh-contact__list-item company">
+          <img src="./assets/icon-company.svg" alt="icon" class="icon-contact">
           ${displayContactItem(company)}
         </li>
       </ul>
