@@ -43,6 +43,10 @@ function displayUserInfo(data) {
   if (bio === null || bio === '') bio = 'This dev has no bio listed.';
 
   // ToDo: add dynamic alt attribute for user avatar
+
+  const dateOptions = { year: 'numeric', month: 'short', day: 'numeric'}
+  const date = new Date(created_at)
+
   gitHubResults.innerHTML = `
     <div class="gh-info__image">
       <img src="${avatar_url}" alt="github user avatar" class="gh-user__avatar">
@@ -53,7 +57,7 @@ function displayUserInfo(data) {
         <h2 class="gh-user__name fw-700">${name}</h2>
         <a href="${html_url}" target="_blank" class="gh-user__link fw-400">@${login}</a>
       </div>
-      <span id="user-joined__date">Joined ${created_at}</span>
+      <span id="user-joined__date">Joined ${date.toDateString()}</span>
     </div>
   
     <div class="gh-info__bio">
@@ -65,15 +69,15 @@ function displayUserInfo(data) {
       <div class="gh-user__meta">
         <div class="meta-col">
           <h4 class="fw-400">Repos</h4>
-          <p class="meta-result fw-700">${public_repos}</p>
+          <span class="meta-result fw-700">${public_repos}</span>
         </div>
         <div class="meta-col">
           <h4 class="fw-400">Followers</h4>
-          <p class="meta-result fw-700">${followers}</p>
+          <span class="meta-result fw-700">${followers}</span>
         </div>
         <div class="meta-col">
           <h4 class="fw-400"> Following</h4>
-          <p class="meta-result fw-700">${following}</p>
+          <span class="meta-result fw-700">${following}</span>
         </div>
       </div>
 
