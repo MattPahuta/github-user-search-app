@@ -33,19 +33,32 @@ async function fetchGitHubData(devname) {
   displayUserInfo(data)
 }
 
+function formatDate(date) {
+  // return format: 25 Jan 2011
+  const dateArr = date.toDateString().split(' ');
+  console.log(dateArr)
+
+  // ToDo: need to account for leading zeros in day
+
+  return `${dateArr[2]} ${dateArr[1]} ${dateArr[3]}`
+
+}
+
 // handle html for data returned from fetchGitHubData function
 function displayUserInfo(data) {
-
+  // destructure data object
   let {avatar_url, name, login, html_url, created_at, bio, public_repos, followers, following, location, twitter_username, blog, company } = data;
-
+  // target results section
   const gitHubResults = document.querySelector('.gh-results-grid');
   // Account for null values in data:
   if (bio === null || bio === '') bio = 'This dev has no bio listed.';
-
   // ToDo: add dynamic alt attribute for user avatar
 
+  // Handle date formatting 
   const dateOptions = { year: 'numeric', month: 'short', day: 'numeric'}
   const date = new Date(created_at)
+
+  formatDate(date)
 
   gitHubResults.innerHTML = `
     <div class="gh-info__image">
@@ -57,11 +70,11 @@ function displayUserInfo(data) {
         <h2 class="gh-user__name fw-700">${name}</h2>
         <a href="${html_url}" target="_blank" class="gh-user__link fw-400">@${login}</a>
       </div>
-      <span id="user-joined__date">Joined ${date.toDateString()}</span>
+      <span id="user-joined__date">Joined ${formatDate(date)}</span>
     </div>
   
     <div class="gh-info__bio">
-      <p class="gh-user__bio">${bio}.</p>
+      <p class="gh-user__bio">${bio}</p>
     </div>
 
     <div class="gh-info__data">
