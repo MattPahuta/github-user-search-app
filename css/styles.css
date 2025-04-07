@@ -1,169 +1,224 @@
 /* ----------------- */
 /* Custom Properties */
 /* ----------------- */
-:root {
-  /* colors */
-  /* light-mode */
-  --clr-white: #FEFEFE;
-  --clr-offwhite: #F6F8FF;
-  --clr-blue-primary: #0079FF; 
-  --clr-gray: #697C9A;
-  --clr-blue-secondary: #4B6A9B;
-  --clr-lm-dark: #2B3442;
-  /* dark mode */
-  /* active state search btn - both modes */
-  --clr-blue-secondary__active: #60ABFF;
-  --clr-dm-dark: #141D2F;
-  --clr-dm-primary: #1E2A47; 
-  /* box shadow */
-  --box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19856);
-/* 
-  font-family , monospace;
-  font-weights - 400 (reg), 700 (bold)
-*/
-  --ff-body: 'Space Mono', monospace;
-  /* font sizes, weights, line-heights*/
-  /* 26px/700/38px line height */
-  --fs-700: 1.625rem;
-  /* 16px */
-  --fs-600: 1rem;
-  /* button - 14px */
-  --fs-500: 0.875rem;
-  /* Body - 13px/400/20px line height */
-  --fs-400: 0.813rem;
-  /* 11px */
-  --fs-300: 0.7rem;
-}
+@layer reset, base;
 
-@media (min-width: 38em) {
-  :root {
-    /* 22px/700/33px line height */
-    --fs-600: 1.375rem;
-    /* 16px */
-    --fs-500: 1rem;
-    /* 15px */
-    --fs-400: 0.938rem;
-    /* 13px */
-    --fs-300: 0.813rem;
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  [role='list'] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-block-size: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
+
+  p,
+  li {
+    text-wrap: wrap;
+  }
+
+  img,
+  picture {
+    max-inline-size: 100%;
+    display: block;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
   }
 }
 
- 
-/* ======================== */
-/* Reset and General Styles */
-/* ======================== */
+@layer base {
+  :root {
+    /* Fonts and Font Sizes */
+    --ff-primary: 'Space Mono', monospace;
+    --fs-300: 0.7rem;
+    --fs-400: 0.813rem;
+    --fs-500: 0.875rem;
+    --fs-600: 1rem;
+    --fs-700: 1.625rem;
+    @media (width > 40rem) {
+      --fs-300: 0.813rem;
+      --fs-400: 0.938rem;
+      --fs-500: 1rem;
+      --fs-600: 1.375rem;
+    }
+    /* Colors */
+    /* light-mode */
+    --clr-white: #fefefe;
+    --clr-offwhite: #f6f8ff;
+    --clr-blue-primary: #0079ff;
+    --clr-gray: #697c9a;
+    --clr-blue-secondary: #4b6a9b;
+    --clr-lm-dark: #2b3442;
+    /* dark mode */
+    /* active state search btn - both modes */
+    --clr-blue-secondary__active: #60abff;
+    --clr-dm-dark: #141d2f;
+    --clr-dm-primary: #1e2a47;
+    /* box shadow */
+    --box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19856);
+    /* Spacing */
+    --spacing-0: 0px;
+    --spacing-025: 0.25rem; /* 4px */
+    --spacing-050: 0.5rem; /* 8px */
+    --spacing-075: 0.75rem; /* 12px */
+    --spacing-100: 1rem; /* 16px */
+    --spacing-150: 1.5rem; /* 24px */
+    --spacing-200: 2rem; /* 32px */
+    --spacing-250: 2.5rem; /* 40px */
+    --spacing-300: 3rem; /* 48px */
+    --spacing-600: 6rem; /* 96px */
+  }
 
-html {
-  font-size: 100%;
-  box-sizing: border-box;
-}
+  html {
+    font-family: var(--ff-primary);
+  }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-figure,
-picture {
-  margin: 0;
-}
-
-img,
-picture {
-  max-width: 100%;
-  min-height: 100%;
-}
-
-img {
-  display: block;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-body {
-  margin: 0;
-  padding: 0 1.5em;
-  font-family: var(--ff-body);
-  text-align: left;
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
-  background-color: var(--clr-offwhite);
-  color: var(--clr-blue-secondary);
-}
-
-/* Typography */
-
-.fw-700 { font-weight: 700; }
-.fw-400 { font-weight: 400; }
-
-h1, h2, h3, h4 {
-  line-height: 1.5;
-}
-
-h1 {
-  font-size: var(--fs-700);
-  color: #222731;
-}
-
-h2 {
-  font-size: var(--fs-600);
-}
-
-h3 {
-  font-size: var(--fs-400);
-}
-
-h4 {
-  font-size: var(--fs-300);
-}
-
-@media (min-width: 40em) {
   body {
-    padding: 0 6em;
+    min-height: 100vh;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--clr-offwhite);
+    color: var(--clr-blue-secondary);
+  }
+
+  h1 {
+    font-size: var(--fs-700);
+    color: #222731;
   }
 
   h2 {
-    font-size: var(--fs-700);
+    font-size: var(--fs-600);
+  }
+
+  h3 {
+    font-size: var(--fs-400);
+  }
+
+  h4 {
+    font-size: var(--fs-300);
+  }
+
+  @media (min-width: 40em) {
+    body {
+      padding: 0 6em;
+    }
+
+    h2 {
+      font-size: var(--fs-700);
+    }
   }
 }
 
+@layer layout {
+  /* .wrapper {
+    --wrapper-max-width: 730px;
+    --padding-inline: var(--spacing-150);
+    margin-inline: auto;
+    width: min(
+      100% - var(--padding-inline),
+      var(--wrapper-max-width)
+    );
 
-/* Utility classes */
-.container {
-  max-width: 730px;
-  width: 100%;
-  /* border: 1px solid gray; */
+    @media (width > 40rem) {
+      --padding-inline: 0;
+    }
+  } */
+
+  .wrapper {
+    --wrapper-max-width: 730px;
+
+    max-width: var(--wrapper-max-width);
+    margin-inline: auto;
+    padding-inline: var(--spacing-150);
+
+  }
+
+
 }
 
-.sr-only {
-
+@layer components {
 }
 
-/* Special Utility */
-.not-available {
-  opacity: 0.5;
+@layer utilities {
+  .visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .container {
+    max-width: 730px;
+    width: 100%;
+    /* border: 1px solid gray; */
+  }
+
+  .fw-700 {
+    font-weight: 700;
+  }
+  .fw-400 {
+    font-weight: 400;
+  }
+
+  .not-available {
+    opacity: 0.5;
+  }
 }
 
 /* Components*/
 .btn {
-  /* width: 100%; */
   padding: 0.9em 1.2em;
   cursor: pointer;
   font-family: inherit;
@@ -271,7 +326,7 @@ h4 {
   display: none;
   font-size: 15px;
   line-height: 22.22px;
-  color: #F74646;
+  color: #f74646;
 }
 
 @media (min-width: 40em) {
@@ -289,7 +344,6 @@ h4 {
     font-size: 18px;
   }
 }
-
 
 /* Results section */
 .gh-results-grid {
@@ -316,8 +370,6 @@ h4 {
   object-fit: contain;
 }
 
-
-
 .gh-user__name {
   color: var(--clr-lm-dark);
 }
@@ -340,7 +392,6 @@ h4 {
 }
 
 @media (min-width: 40em) {
-
   .gh-info__header {
     gap: 2.25em;
   }
@@ -350,7 +401,6 @@ h4 {
   .gh-user__link {
     font-size: var(--fs-500);
   }
-
 }
 
 @media (min-width: 56em) {
@@ -364,7 +414,7 @@ h4 {
   }
 
   .gh-info__bio,
-  .gh-info__data {  
+  .gh-info__data {
     grid-column: 2 / 3;
   }
 
@@ -377,8 +427,6 @@ h4 {
     align-items: flex-start;
     width: 100%;
   }
-
-
 }
 
 /* Github meta */
@@ -393,7 +441,6 @@ h4 {
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
   gap: 1em;
-
 }
 
 .meta-col {
@@ -401,7 +448,7 @@ h4 {
 }
 
 .meta-col > h4 {
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
 }
 
 .meta-result {
@@ -409,10 +456,9 @@ h4 {
   color: var(--clr-lm-dark);
 }
 
-
 /* User contact */
 
-.gh-user__contact-list{
+.gh-user__contact-list {
   margin-top: 2rem;
   padding: 0;
   font-size: var(--fs-400);
@@ -444,7 +490,6 @@ h4 {
 }
 
 @media (min-width: 38em) {
-  
   .gh-user__meta {
     margin-top: 2em;
     padding: 1em 2em;
@@ -453,12 +498,10 @@ h4 {
   .meta-col {
     text-align: left;
   }
-
-
 }
 
 @media (min-width: 42em) {
-  .gh-user__contact-list{
+  .gh-user__contact-list {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -468,8 +511,16 @@ h4 {
     min-width: 48%;
   }
 
-  .location { order: 1 }
-  .website { order: 3 }
-  .twitter { order: 2 }
-  .company { order: 4 }
+  .location {
+    order: 1;
+  }
+  .website {
+    order: 3;
+  }
+  .twitter {
+    order: 2;
+  }
+  .company {
+    order: 4;
+  }
 }
