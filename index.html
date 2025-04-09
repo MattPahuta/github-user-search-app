@@ -54,120 +54,126 @@
           </button>
         </form>
         <!-- Search Results Section-->
+        <!-- ToDo: Add aria-live="polite" to updating elements??? -->
+        <!-- ToDo: target="_blank" links with extra aria attributes??? -->
         <section>
           <!-- Display user search results card here -->
-          <div id="resultContainer">
-            <!-- Static placeholder markup -->
-            <div class="card gh-results-grid">
-              <div class="gh-info__image">
-                <img
-                  src="./assets/octocat.png"
-                  alt="github user avatar"
-                  class="gh-user__avatar" />
+          <div class="card gh-results-grid">
+            <div class="gh-info__image">
+              <img
+                src="./assets/octocat.png"
+                alt="github user avatar"
+                id="gh-user__avatar"
+                class="gh-user__avatar" />
+            </div>
+            <div class="gh-info__header">
+              <div>
+                <h2 id="gh-user__name" class="gh-user__name fw-700">
+                  The Octocat
+                </h2>
+                <a
+                  href="#"
+                  target="_blank"
+                  id="gh-user__handle"
+                  class="gh-user__link fw-400"
+                  >@octocat</a
+                >
               </div>
-              <div class="gh-info__header">
-                <div>
-                  <h2 class="gh-user__name fw-700">The Octocat</h2>
+              <p id="gh-user__date" class="gh-user__date">
+                25 Jan 2011
+              </p>
+            </div>
+            <div class="gh-info__bio">
+              <p id="gh-user__bio" class="gh-user__bio">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing
+                elit. Donec odio. Quisque volutpat mattis eros.
+              </p>
+            </div>
+            <!-- GitHub User Data and Metadata -->
+            <div class="gh-info__data">
+              <!-- Table metadata -->
+              <table class="gh-info__table">
+                <caption class="visually-hidden">
+                  User's total repos, followers, and Github users
+                  followed
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="gh-info__table-header">
+                      Repos
+                    </th>
+                    <th scope="col" class="gh-info__table-header">
+                      Followers
+                    </th>
+                    <th scope="col" class="gh-info__table-header">
+                      Following
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      id="gh-user__repos"
+                      class="gh-info__table-item">
+                      8
+                    </td>
+                    <td
+                      id="gh-user__followers"
+                      class="gh-info__table-item">
+                      3938
+                    </td>
+                    <td
+                      id="gh-user__following"
+                      class="gh-info__table-item">
+                      9
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Replace imgs with inline svgs -->
+              <ul class="gh-user__contact-list" role="list">
+                <li class="gh-contact__list-item location">
+                  <img
+                    src="./assets/icon-location.svg"
+                    alt=""
+                    class="icon-contact" />
+                  <span id="gh-user__location">San Francisco</span>
+                </li>
+                <li class="gh-contact__list-item website">
+                  <img
+                    src="./assets/icon-website.svg"
+                    alt=""
+                    class="icon-contact" />
                   <a
+                    id="gh-user__website"
+                    class="contact-link"
                     href="#"
-                    target="_blank"
-                    class="gh-user__link fw-400"
-                    >@octocat</a
+                    >https://github.blog</a
                   >
-                </div>
-                <p id="gh-user__date" class="gh-user__date">
-                  25 Jan 2011
-                </p>
-              </div>
-              <div class="gh-info__bio">
-                <p class="gh-user__bio">
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing
-                  elit. Donec odio. Quisque volutpat mattis eros.
-                </p>
-              </div>
-              <!-- GitHub User Data and Metadata -->
-              <div class="gh-info__data">
-                <!-- This should be a table -->
-                <table class="gh-info__table">
-                  <caption class="visually-hidden">
-                    User's total repos, followers, and Github users
-                    followed
-                  </caption>
-                  <thead>
-                    <tr class="">
-                      <th scope="col" class="gh-info__table-header">
-                        Repos
-                      </th>
-                      <th scope="col" class="gh-info__table-header">
-                        Followers
-                      </th>
-                      <th scope="col" class="gh-info__table-header">
-                        Following
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="">
-                      <td class="gh-info__table-item">8</td>
-                      <td class="gh-info__table-item">3938</td>
-                      <td class="gh-info__table-item">9</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <!-- <div class="gh-user__meta">
-                  <div class="meta-col">
-                    <h4 class="fw-400">Repos</h4>
-                    <span class="meta-result fw-700">8</span>
-                  </div>
-                  <div class="meta-col">
-                    <h4 class="fw-400">Followers</h4>
-                    <span class="meta-result fw-700">3938</span>
-                  </div>
-                  <div class="meta-col">
-                    <h4 class="fw-400">Following</h4>
-                    <span class="meta-result fw-700">9</span>
-                  </div>
-                </div> -->
-
-                <!-- Replace imgs with inline svgs -->
-                <ul class="gh-user__contact-list">
-                  <li class="gh-contact__list-item location">
-                    <img
-                      src="./assets/icon-location.svg"
-                      alt=""
-                      class="icon-contact" />
-                    <p id="user-loaction">San Francisco</p>
-                  </li>
-                  <li class="gh-contact__list-item website">
-                    <img
-                      src="./assets/icon-website.svg"
-                      alt=""
-                      class="icon-contact" />
-                    <a class="contact-link" href="#" id="user-website"
-                      >https://github.blog</a
-                    >
-                  </li>
-                  <li class="gh-contact__list-item twitter">
-                    <img
-                      src="./assets/icon-twitter.svg"
-                      alt=""
-                      class="icon-contact" />
-                    <a class="contact-link" href="#" id="user-twitter"
-                      >Not Available</a
-                    >
-                  </li>
-                  <li class="gh-contact__list-item company">
-                    <img
-                      src="./assets/icon-company.svg"
-                      alt=""
-                      class="icon-contact" />
-                    <a class="contact-link" href="#" id="user-company"
-                      >@github</a
-                    >
-                  </li>
-                </ul>
-              </div>
+                </li>
+                <li class="gh-contact__list-item twitter">
+                  <img
+                    src="./assets/icon-twitter.svg"
+                    alt=""
+                    class="icon-contact" />
+                  <a id="gh-user__twitter" class="contact-link" href="#" 
+                    >Not Available</a
+                  >
+                </li>
+                <li class="gh-contact__list-item company">
+                  <img
+                    src="./assets/icon-company.svg"
+                    alt=""
+                    class="icon-contact" />
+                  <a
+                    id="gh-user__company"
+                    class="contact-link"
+                    href="#"
+                    >@github</a
+                  >
+                </li>
+              </ul>
             </div>
           </div>
         </section>
