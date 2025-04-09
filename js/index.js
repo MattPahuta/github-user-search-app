@@ -88,7 +88,7 @@ function renderUserCard(data){
         <h2 class="gh-user__name fw-700">${name || 'no name available'}</h2>
         <a href="${html_url}" target="_blank" class="gh-user__link fw-400">@${login}</a>
       </div>
-      <span id="user-joined__date">Joined ${formatDate(created_at)}</span>
+      <p id="gh-user__date" class="gh-user__date">Joined ${formatDate(created_at)}</p>
     </div>
   
     <div class="gh-info__bio">
@@ -147,6 +147,6 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
 });
 
 // Load default user on initial page load
-window.addEventListener('DOMContentLoaded', () => {
-  fetchGitHubUser('octocat');
-});
+// window.addEventListener('DOMContentLoaded', () => {
+//   fetchGitHubUser('octocat');
+// });
