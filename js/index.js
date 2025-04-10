@@ -1,7 +1,4 @@
 // GitHub User Search App
-const resultContainer = document.getElementById('resultContainer');
-// let username = 'octocat'; // default user
-
 // ToDo: Add call at page load to fetch default github data - octocat
   // *** data needed: 
   // *********************************
@@ -35,18 +32,6 @@ const resultContainer = document.getElementById('resultContainer');
     console.log('Company: ', company) // if null, 'Not Available'
 */
 
-const fetchUserData = async (username) => {
-  // fetch data from github api
-  try {
-    const res = await fetch(`https://api.github.com/users/${username}`);
-    const data = await res.json();
-    console.log(data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    displayUserInfo(data)
-  }
-}
-
 async function fetchGitHubUser(username) {
   // fetch data from github api
   try {
@@ -64,6 +49,26 @@ async function fetchGitHubUser(username) {
 }
 
 // ToDo: Add utility functions: formatDate, validateUrl - add to utils.js
+// ToDo: Simplify this validation function
+function validateUrl(url) {
+  // Check if the URL is valid
+  const pattern = new RegExp(
+    '^(https?:\\/\\/)?' + // protocol
+    '((([a-zA-Z\\d]([a-zA-Z\\d-]*[a-zA-Z\\d])*)\\.)+[a-zA-Z]{2,}|' + // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-zA-Z\\d%_.~+]*)*' + // port and path
+    '(\\?[;&a-zA-Z\\d%_.~+=-]*)?' + // query string
+    '(\\#[-a-zA-Z\\d_]*)?$', // fragment locator
+    'i'
+  );
+  return pattern.test(url);
+
+}
+
+// console.log(validateUrl('https://github.com')); // true
+// console.log(validateUrl('invalid-url')); // false 
+// console.log(validateUrl('htp://google.com')); // false
+  
 
 // Format date to '25 Jan 2011' format
 function formatDate(dateString) {
@@ -74,6 +79,15 @@ function formatDate(dateString) {
   return `${day} ${month} ${year}`;
 }
 
+// Create HTML anchor element
+function createAnchorElement(href, text) {
+  const aElement = document.createElement('a');
+  aElement.href = href;
+  aElement.textContent = text;
+  aElement.classList.add('contact-link');
+  return aElement;
+}
+
 // Render User Avatar
 function renderUserAvatar(avatar_url, name) {
   const avatar = document.getElementById('gh-user__avatar');
@@ -82,13 +96,16 @@ function renderUserAvatar(avatar_url, name) {
 }
 
 // Render username 
-// ToDo: separate name and handle link 
-function renderUserName(name, login, html_url) {
+function renderUserName(name) {
   const userName = document.getElementById('gh-user__name');
   userName.textContent = name || 'Anonymous Github User';
-  const userHandle = document.getElementById('gh-user__handle');
-  userHandle.href = html_url;
-  userHandle.textContent = `@${login}`;
+}
+
+// Render GitHub profile link
+function renderUserProfileLink(html_url, login) {
+  const userLink = document.getElementById('gh-user__profile');
+  userLink.href = html_url;
+  userLink.textContent = `@${login}`;
 }
 
 // Render user joined data
@@ -116,37 +133,55 @@ function renderUserMetadata(public_repos, followers, following) {
 // Render user location
 function renderUserLocation(location) {
   const userLocation = document.getElementById('gh-user__location');
-  userLocation.textContent = location || 'Not specified';
+  userLocation.textContent = location || 'Not Specified';
 }
 
 // Render user website
 function renderUserWebsite(blog) {
-  const userWebsite = document.getElementById('gh-user__website');
-  userWebsite.textContent = blog || 'Not specified';
+  const userWebsite = document.getElementById('gh-user__website'); // <span>
+  userWebsite.innerHTML = ''; // clear previous <a> tag if exists
+  // if blog is invalid, remove the <a> tag from <li> tag
+  if (!validateUrl(blog)) {
+    console.error('Invalid URL:', blog);
+    userWebsite.textContent = 'Not Specified'; // add text content to <span> tag
+  } else {
+    // if blog is valid, set the text content and href attribute for <a> tag
+    const websiteLink = createAnchorElement(blog, blog); // create <a> tag with href and text content
+    userWebsite.appendChild(websiteLink); // append <a> tag to <span> tag
+  }
+  userWebsite.parentElement.style.opacity = validateUrl(blog) ? '1' : '0.6'; // set opacity for <li> tag
 }
 
 // Render user twitter
 function renderUserTwitter(twitter_username) {
-  const userTwitter = document.getElementById('gh-user__twitter'); 
-  userTwitter.textContent = twitter_username || 'Not specified';
-  // ToDo: update href for twitter/x link
-  userTwitter.href = twitter_username ? `https://twitter.com/${twitter_username}` : '#'; // ToDo: validate url
+  const userTwitter = document.getElementById('gh-user__twitter'); // <span>
+  if (userTwitter.childNodes.length > 0) {
+    userTwitter.innerHTML = ''; // clear previous <a> tag if exists
+  }
+  if (!twitter_username) {
+    userTwitter.textContent = 'Not Available'; // add text content to <span> tag
+  } else {
+    const twitterLink = createAnchorElement(`https://twitter.com/${twitter_username}`, twitter_username); // create <a> tag with href and text content
+    userTwitter.appendChild(twitterLink); // append <a> tag to <span> tag
+  }
+  userTwitter.parentElement.style.opacity = twitter_username ? '1' : '0.6'; // set opacity for <li> tag
 }
 
 // Render user company
 function renderUserCompany(company) {
   const userCompany = document.getElementById('gh-user__company');
   userCompany.textContent = company || 'Not specified';
+  userCompany.parentElement.style.opacity = company ? '1' : '0.6'; // set opacity for <li> tag
 }
 
 
 // Render user card with data
-// ToDo: render data by calling various functions
 async function renderUserData(data) {
   try {
     const { avatar_url, name, login, html_url, created_at, bio, public_repos, followers, following, location, twitter_username, blog, company } = await data;
     renderUserAvatar(avatar_url, name);
-    renderUserName(name, login, html_url);
+    renderUserName(name);
+    renderUserProfileLink(html_url, login);
     renderUserJoinedDate(created_at);
     renderUserBio(bio);
     renderUserMetadata(public_repos, followers, following);
@@ -162,12 +197,13 @@ async function renderUserData(data) {
 document.getElementById('searchForm').addEventListener('submit', function (e) {
   e.preventDefault();
   console.log('Form submitted!');
-  const username = document.getElementById('search-input').value.trim();
+  const searchInput = document.getElementById('search-input');
+  const username = searchInput.value.trim();
   if (username) {
     fetchGitHubUser(username);
   }
   // Clear input field after submission
-  username.value = '';
+  searchInput.value = '';
 });
 
 // Load default user on initial page load

@@ -111,6 +111,8 @@ Styling to match the design comp was easier by simply changing the table's displ
 }
 ```
 
+I set out to make the functions as generic as possible, 
+
 ```js
 const proudOfThisFunc = () => {
   console.log('🎉');

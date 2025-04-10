@@ -493,8 +493,6 @@
 
 .icon-contact {
   width: 20px;
-  height: 20px;
-  object-fit: contain;
 }
 
 @media (min-width: 40rem) {
