@@ -207,9 +207,9 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
 });
 
 // Load default user on initial page load
-window.addEventListener('DOMContentLoaded', () => {
-  fetchGitHubUser('octocat');
-});
+// window.addEventListener('DOMContentLoaded', () => {
+//   fetchGitHubUser('octocat');
+// });
 
 
 

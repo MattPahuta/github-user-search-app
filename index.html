@@ -43,13 +43,15 @@
             src="./assets/icon-search.svg"
             alt="Search icon"
             class="search-icon" />
-          <label for="search-input" class="visually-hidden">Search by user name</label>
+          <label for="search-input" class="visually-hidden">Search GitHub username</label>
           <input
             id="search-input"
             class="search-input"
             type="text"
-            placeholder="Search GitHub username…" />
-          <span class="error-text">No results</span>
+            placeholder="Search GitHub username…" 
+            required 
+            aria-describedby="alert"/>
+          <span id="alert" class="error-text" aria-live="polite">No results</span>
           <button id="search-btn" class="btn search-btn">
             Search
           </button>
