@@ -38,24 +38,25 @@
       </header>
       <main>
         <!-- Search form -->
-        <form id="searchForm" class="search-group">
-          <img
-            src="./assets/icon-search.svg"
-            alt="Search icon"
-            class="search-icon" />
-          <label for="search-input" class="visually-hidden">Search GitHub username</label>
+        <form id="searchForm" class="search-form" role="search">
+          <label for="search-input" class="visually-hidden"
+            >Search by GitHub username</label
+          >
           <input
             id="search-input"
             class="search-input"
             type="text"
-            placeholder="Search GitHub username…" 
-            required 
-            aria-describedby="alert"/>
-          <span id="alert" class="error-text" aria-live="polite">No results</span>
+            placeholder="Search GitHub username…"
+            required
+            aria-describedby="alert" />
           <button id="search-btn" class="btn search-btn">
             Search
           </button>
         </form>
+        <!-- Render error alerts below form for imporoved A11Y -->
+        <p id="alert" class="error-text" aria-live="polite"
+          >No results</p
+        >
         <!-- Search Results Section-->
         <!-- ToDo: Add aria-live="polite" to updating elements??? -->
         <!-- ToDo: target="_blank" links with extra aria attributes??? -->
