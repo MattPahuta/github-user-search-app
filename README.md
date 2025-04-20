@@ -11,6 +11,7 @@ This is a solution to the [GitHub user search app challenge on Frontend Mentor](
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -49,7 +50,7 @@ Users should be able to:
 
 ### What I learned
 
-I initially marked up and styled the GitHub User's metadata section using grid and a series of divs before realizing this is very clearly tabular data and a perfect use case for a `table` element. This revision from my initial code was part of an overall re-focus on realigning the app with accessbility best practices. 
+I initially marked up and styled the GitHub User's metadata section using grid and a series of divs before realizing this is very clearly tabular data and a perfect use case for a `table` element. This revision from my initial code was part of an overall re-focus on realigning the app with accessbility best practices.
 
 ```html
 <table class="gh-info__table">
@@ -111,7 +112,7 @@ Styling to match the design comp was easier by simply changing the table's displ
 }
 ```
 
-I set out to make the functions as generic as possible, 
+I set out to make the functions as generic as possible,
 
 ```js
 const proudOfThisFunc = () => {
@@ -120,6 +121,11 @@ const proudOfThisFunc = () => {
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+
+### Useful resources
+
+- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+- [Beautiful focus outlines](https://medienbaecker.com/articles/focus-outlines) - Great article on creating good looking and accessible focus outlines for interactive elements. Tried some of the approaches in this project.
 
 ## Author
 
