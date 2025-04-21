@@ -50,6 +50,10 @@ Users should be able to:
 
 ### What I learned
 
+Project Notes
+- Slight update to base colors from design for better A11Y contrast ratio
+- Repositioned alert dialogs for better A11Y compliance
+
 I initially marked up and styled the GitHub User's metadata section using grid and a series of divs before realizing this is very clearly tabular data and a perfect use case for a `table` element. This revision from my initial code was part of an overall re-focus on realigning the app with accessbility best practices.
 
 ```html
