@@ -32,19 +32,33 @@
     console.log('Company: ', company) // if null, 'Not Available'
 */
 
+const alertMessage = document.getElementById('alertMessage');
+
+function renderAlert(message = 'Something went wrong') {
+  alertMessage.textContent = message;
+  console.log(`Rendering alert: ${message}`);
+}
+
 async function fetchGitHubUser(username) {
   // fetch data from github api
   try {
     const res = await fetch(`https://api.github.com/users/${username}`);
-    if (!res.ok) {
-      throw new Error('User not found');
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data);
+      renderUserData(data);
+    } else if (res.status === 404 && !res.ok) {
+      console.log('404 error...')
+      renderAlert('No results');
+      // throw new Error('User not found');
+    } else if (res.status === 403 && !res.ok) {
+      console.log('403 error...')
+      renderAlert('API rate limit exceeded');
     }
-    const data = await res.json();
-    console.log(data);
-    renderUserData(data);
   } catch (error) {
     console.error('Error fetching data:', error);
-    // ToDo: add error message to html-gnerator function call
+    renderAlert();
   }
 }
 
@@ -134,6 +148,8 @@ function renderUserMetadata(public_repos, followers, following) {
 function renderUserLocation(location) {
   const userLocation = document.getElementById('gh-user__location');
   userLocation.textContent = location || 'Not Specified';
+
+  userLocation.parentElement.style.opacity = location ? '1' : '0.6'; // set opacity for <li> tag
 }
 
 // Render user website
@@ -142,7 +158,8 @@ function renderUserWebsite(blog) {
   userWebsite.innerHTML = ''; // clear previous <a> tag if exists
   // if blog is invalid, remove the <a> tag from <li> tag
   if (!validateUrl(blog)) {
-    console.error('Invalid URL:', blog);
+    // differentiate between an empty string or an invalid url
+    // blog === '' ? console.error('No website listed') : console.error('Invalid URL:', blog);
     userWebsite.textContent = 'Not Specified'; // add text content to <span> tag
   } else {
     // if blog is valid, set the text content and href attribute for <a> tag
@@ -197,6 +214,7 @@ async function renderUserData(data) {
 document.getElementById('searchForm').addEventListener('submit', function (e) {
   e.preventDefault();
   console.log('Form submitted!');
+  alertMessage.textContent = ''; // clear any previous errors
   const searchInput = document.getElementById('search-input');
   const username = searchInput.value.trim();
   if (username) {

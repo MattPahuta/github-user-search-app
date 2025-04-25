@@ -262,7 +262,8 @@
   }
 
   .search-form {
-    margin-bottom: var(--spacing-200);
+    position: relative;
+    margin-bottom: var(--spacing-300);
     padding: var(--spacing-050);
     display: flex;
     align-items: center;
@@ -302,11 +303,13 @@
     }
   }
 
-  .error-text {
-    display: none;
+  .search-form__alert {
+    position: absolute;
     font-size: var(--fs-300);
-    line-height: 22.22px;
+    font-weight: 600;
     color: var(--clr-alert);
+    right: var(--spacing-050);
+    top: 115%;
   }
 
   /* Results section */
