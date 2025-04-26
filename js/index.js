@@ -97,6 +97,7 @@ function formatDate(dateString) {
 function createAnchorElement(href, text) {
   const aElement = document.createElement('a');
   aElement.href = href;
+  aElement.target = '_blank';
   aElement.textContent = text;
   aElement.classList.add('contact-link');
   return aElement;
@@ -215,7 +216,7 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
   e.preventDefault();
   console.log('Form submitted!');
   alertMessage.textContent = ''; // clear any previous errors
-  const searchInput = document.getElementById('search-input');
+  const searchInput = document.getElementById('searchInput');
   const username = searchInput.value.trim();
   if (username) {
     fetchGitHubUser(username);
