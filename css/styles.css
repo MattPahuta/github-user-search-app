@@ -86,24 +86,28 @@
     /* Colors */
     /* light-mode */
     --clr-white: hsl(0, 0%, 100%);
-    --clr-offwhite: hsl(227, 100%, 98%);
-    --clr-blue-primary: hsl(212, 100%, 50%);
-    --clr-gray: hsl(217, 20%, 51%);
-    --clr-blue-secondary_old: hsl(217, 35%, 45%);
+    --clr-neutral-100: hsl(227, 100%, 98%);
+
+    --clr-blue-400: hsl(212, 100%, 69%);
+    --clr-blue-500: hsl(212, 100%, 50%);
+    --clr-blue-600: hsl(217, 48%, 33%);
+
+    --clr-gray-500: hsl(217, 20%, 51%);
+
     /* Adjusted primary body text color (light mode) for better contrast */
-    --clr-blue-secondary: hsl(217, 48%, 33%);
-    --clr-lm-dark: hsl(217, 21%, 21%);
+    --clr-gray-800: hsl(217, 21%, 21%);
 
     --clr-alert: hsl(0, 92%, 62%);
 
     /* dark mode */
     /* active state search btn - both modes */
-    --clr-blue-secondary__active: hsl(212, 100%, 69%);
     --clr-dm-dark: hsl(220, 40%, 13%);
     --clr-dm-primary: hsl(222, 41%, 20%);
+    --clr-blue-800: hsl(222, 41%, 20%);
+
+
     /* box shadow */
     --box-shadow: 0px 16px 30px -10px hsla(227, 46%, 50%, 0.2); /* 0.2 */
-
     --shadow-dark: 0px 16px 30px -10px hsla(212, 22%, 35%, 0.15); /* 0.15 */
 
     /* Focus */
@@ -135,6 +139,7 @@
   }
 
   html {
+    /* color-scheme: dark light; */
     font-family: var(--ff-primary);
   }
 
@@ -158,18 +163,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--clr-offwhite);
-    color: var(--clr-blue-secondary);
+    justify-content: center;
+    background-color: var(--clr-newtral-100);
+    color: var(--clr-blue-600);
   }
 
   /* 
   Use something similar for headings/body?
   font-size: clamp(1em, 0.9em + 1vw, 1.5em); 
   */
-  h1 {
+  h1.site-title {
     font-size: var(--fs-700);
     /* color: hsl(220, 18%, 16%); */
     color: var(--clr-dm-primary);
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
 }
@@ -202,7 +213,7 @@
 
 @layer components {
   .btn {
-    --focus-outline-color: var(--clr-blue-secondary);
+    --focus-outline-color: var(--clr-blue-600);
     padding: 0.975rem 1rem;
     cursor: pointer;
     font-family: inherit;
@@ -212,7 +223,7 @@
     text-align: center;
     border: none;
     border-radius: var(--radius-010);
-    background: var(--clr-blue-primary);
+    background: var(--clr-blue-500);
     color: var(--clr-white);
     display: inline-flex;
     align-items: center;
@@ -229,7 +240,7 @@
 
     &:hover,
     &:focus-visible {
-      background: var(--clr-blue-secondary);
+      background: var(--clr-blue-600);
     }
   }
 
@@ -245,13 +256,26 @@
     color: inherit;
   }
 
+  
+  .theme-toggle-btn {
+    background-color: transparent;
+    color: var(--clr-gray-500);
+    border: none;
+    display: flex;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
   .mode-icon {
     margin-left: 1rem;
     display: inline-block;
     width: 20px;
     height: 20px;
   }
-
+  
   /* Search section */
 
   .search-form,
@@ -285,7 +309,7 @@
   }
 
   .search-input:focus {
-    outline-color: var(--clr-blue-secondary__active);
+    outline-color: var(--clr-blue-400);
     outline-width: 2px;
     outline-style: solid;
     border-radius: var(--radius-005);
@@ -295,7 +319,7 @@
     font-size: var(--fs-300);
     letter-spacing: -0.5px;
     line-height: 1.9;
-    color: var(--clr-blue-secondary);
+    color: var(--clr-blue-600);
     opacity: 0.7;
 
     @media (width > 36rem) {
@@ -376,11 +400,11 @@
   .gh-user__name {
     margin-bottom: var(--spacing-025);
     font-size: var(--fs-500);
-    color: var(--clr-lm-dark);
+    color: var(--clr-gray-800);
   }
 
   .gh-user__link {
-    color: var(--clr-blue-primary);
+    color: var(--clr-blue-500);
     text-decoration: none;
 
     @media (width > 36rem) {
@@ -398,7 +422,7 @@
     width: 100%;
     border-collapse: collapse;
     border-radius: var(--radius-010);
-    background: var(--clr-offwhite);
+    background: var(--clr-neutral-100);
   }
 
   .gh-info__table th {
@@ -433,7 +457,7 @@
     font-size: var(--fs-600);
     font-weight: 700;
     line-height: 1.1;
-    color: var(--clr-lm-dark);
+    color: var(--clr-gray-800);
 
     @media (width > 36rem) {
       text-align: left;
@@ -481,7 +505,7 @@
 
   .contact-link {
     text-decoration: none;
-    color: var(--clr-blue-secondary);
+    color: var(--clr-blue-600);
 
     &:hover {
       text-decoration: underline;
