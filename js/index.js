@@ -31,8 +31,29 @@
     console.log('Blog: ', blog) // if null, 'Not Available'
     console.log('Company: ', company) // if null, 'Not Available'
 */
+const themeToggle = document.getElementById('themeToggle');
 
 const alertMessage = document.getElementById('alertMessage');
+
+// Handle light/dark mode toggle
+function toggleTheme() {
+  const toggleText = document.getElementById('themeToggleText');
+  const moonIcon = document.getElementById('moonIcon');
+  const sunIcon = document.getElementById('sunIcon');
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  // Toggle button text and icons
+  toggleText.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
+  moonIcon.classList.toggle('visually-hidden', newTheme === 'dark');
+  sunIcon.classList.toggle('visually-hidden', newTheme === 'light');
+
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  console.log(`Theme changed to: ${newTheme}`);
+}
+
+themeToggle.addEventListener('click', toggleTheme);
 
 function renderAlert(message = 'Something went wrong') {
   alertMessage.textContent = message;
