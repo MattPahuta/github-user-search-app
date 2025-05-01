@@ -85,38 +85,25 @@
     }
     /* Colors */
     --clr-white: hsl(0, 0%, 100%);
-    --clr-neutral-100: hsl(227, 100%, 98%); /* background color - light mode*/
-    --clr-neutral-500: hsl(217, 20%, 51%); /* theme toggle color - light mode*/
+    --clr-neutral-100: hsl(227, 100%, 98%);
+    --clr-neutral-500: hsl(217, 20%, 51%);
     --clr-neutral-700: hsl(217, 21%, 21%);
     --clr-neutral-800: hsl(220, 40%, 13%);
 
-    --clr-blue-400: hsl(212, 100%, 69%); /* search button hover, input focus */
-    --clr-blue-500: hsl(212, 100%, 50%); /* search button background color */
-    --clr-blue-600: hsl(217, 35%, 45%); /* primary body text - light mode*/
+    --clr-blue-300: hsl(222, 44%, 70%);
+    --clr-blue-400: hsl(212, 100%, 69%);
+    --clr-blue-500: hsl(212, 100%, 50%);
+    --clr-blue-600: hsl(217, 35%, 45%);
     --clr-blue-800: hsl(222, 41%, 20%);
 
-
-
-
     --clr-alert: hsl(0, 92%, 62%);
-
-    /* dark mode */
-
-
-
-    /* Light Mode */
-    --background-clr-body: var(--clr-neutral-100);
-    --background-clr-app: var(--clr-white);
-    --text-clr-primary: var(--clr-blue-600);
-    --text-clr-secondary: var(--clr-neutral-500);
-    --text-clr-accent: var(--clr-neutral-700); /* darkest */
-
-
-
+    /* light mode svg icons */
+    --clr-svg-icon-fill: var(--clr-blue-600);
+    --clr-svg-icon-fill-dakr: var(--clr-white);
 
     /* box shadow */
-    --box-shadow: 0px 16px 30px -10px hsla(227, 46%, 50%, 0.2); /* 0.2 */
-    --shadow-dark: 0px 16px 30px -10px hsla(212, 22%, 35%, 0.15); /* 0.15 */
+    --box-shadow-primary: 0px 16px 30px -10px hsla(227, 46%, 50%, 0.2); /* 0.2 */
+
 
     /* Focus */
     --focus-outline-color: currentColor;
@@ -144,6 +131,43 @@
     --radius-010: 0.625rem; /* 10px */
     --radius-015: 0.938rem; /* 15px */
     --radius-full: 9999px; /* 100% */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --box-shadow: none;
+      --theme-toggle-clr: var(--clr-white);
+      --theme-toggle-hover: var(--clr-blue-300);
+      --background-clr-body: var(--clr-neutral-800);
+      --background-clr-secondary: var(--clr-neutral-800);
+      --background-clr-app: var(--clr-blue-800);
+      --text-clr-primary: var(--clr-white);
+      --text-clr-secondary: var(--clr-neutral-100);
+      --text-clr-accent: var(--clr-white);
+    }
+  }
+
+  .is-dark {
+    --box-shadow: none;
+    --theme-toggle-clr: var(--clr-white);
+    --background-clr-body: var(--clr-neutral-800);
+    --background-clr-secondary: var(--clr-neutral-800);
+    --background-clr-app: var(--clr-blue-800);
+    --text-clr-primary: var(--clr-white);
+    --text-clr-secondary: var(--clr-neutral-100);
+    --text-clr-accent: var(--clr-white);
+  }
+
+  .is-light {
+    /* Light Mode */
+    --box-shadow: var(--box-shadow-primary);
+    --theme-toggle-clr: var(--clr-neutral-500);
+    --background-clr-body: var(--clr-neutral-100);
+    --background-clr-secondary: var(--clr-neutral-100);
+    --background-clr-app: var(--clr-white);
+    --text-clr-primary: var(--clr-blue-600);
+    --text-clr-secondary: var(--clr-neutral-500);
+    --text-clr-accent: var(--clr-neutral-700);
   }
 
   html {
@@ -191,7 +215,6 @@
       color: inherit;
     }
   }
-
 }
 
 @layer layout {
@@ -265,10 +288,9 @@
     color: inherit;
   }
 
-  
   .theme-toggle-button {
     background-color: transparent;
-    color: var(--clr-neutral-500);
+    color: var(--theme-toggle-clr);
     border: none;
     display: flex;
     font-size: 13px;
@@ -279,10 +301,10 @@
     transition: all 150ms ease-in-out;
 
     &:hover {
-      color: var(--clr-dm-dark);
+      color: var(--theme-toggle-hover);
     }
   }
-  
+
   .mode-icon {
     margin-left: 1rem;
     display: inline-block;
@@ -324,6 +346,7 @@
     background-repeat: no-repeat;
     background-position: 10px center;
     background-size: 20px;
+    background-color: var(--background-clr-app);
     color: inherit;
   }
 
@@ -441,7 +464,7 @@
     width: 100%;
     border-collapse: collapse;
     border-radius: var(--radius-010);
-    background: var(--clr-neutral-100);
+    background-color: var(--background-clr-secondary);
   }
 
   .gh-info__table th {
@@ -520,11 +543,15 @@
     grid-template-columns: min-content auto;
     align-items: center;
     gap: 13px;
+
+    & svg > :is(path, g) {
+      fill: var(--text-clr-primary);
+    }
   }
 
   .contact-link {
     text-decoration: none;
-    color: var(--clr-blue-600);
+    color: inherit;
 
     &:hover {
       text-decoration: underline;

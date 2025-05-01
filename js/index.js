@@ -35,6 +35,11 @@ const themeToggle = document.getElementById('themeToggle');
 
 const alertMessage = document.getElementById('alertMessage');
 
+// ToDo: check if theme set in local storage
+// - if set, apply theme to document
+// - if not set, check system preference and apply theme accordingly
+// - if system preference is dark, set theme to dark, else set to light
+
 // Handle light/dark mode toggle
 function toggleTheme() {
   const toggleText = document.getElementById('themeToggleText');
