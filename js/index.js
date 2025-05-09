@@ -10,7 +10,6 @@ async function fetchGitHubUser(username) {
   // fetch data from github api
   try {
     const res = await fetch(`https://api.github.com/users/${username}`);
-
     if (res.ok) {
       const data = await res.json();
       console.log(data);
@@ -18,7 +17,6 @@ async function fetchGitHubUser(username) {
     } else if (res.status === 404 && !res.ok) {
       console.log('404 error...')
       renderAlert('No results');
-      // throw new Error('User not found');
     } else if (res.status === 403 && !res.ok) {
       console.log('403 error...')
       renderAlert('API rate limit exceeded');
@@ -29,7 +27,6 @@ async function fetchGitHubUser(username) {
   }
 }
 
-// ToDo: Add utility functions: formatDate, validateUrl - add to utils.js
 // ToDo: Simplify this validation function
 function validateUrl(url) {
   // Check if the URL is valid
@@ -43,13 +40,7 @@ function validateUrl(url) {
     'i'
   );
   return pattern.test(url);
-
 }
-
-// console.log(validateUrl('https://github.com')); // true
-// console.log(validateUrl('invalid-url')); // false 
-// console.log(validateUrl('htp://google.com')); // false
-  
 
 // Format date to '25 Jan 2011' format
 function formatDate(dateString) {
@@ -116,8 +107,7 @@ function renderUserMetadata(public_repos, followers, following) {
 function renderUserLocation(location) {
   const userLocation = document.getElementById('gh-user__location');
   userLocation.textContent = location || 'Not Specified';
-
-  userLocation.parentElement.style.opacity = location ? '1' : '0.6'; // set opacity for <li> tag
+  userLocation.parentElement.style.opacity = location ? '1' : '0.8'; // set opacity for <li> tag
 }
 
 // Render user website
@@ -126,15 +116,13 @@ function renderUserWebsite(blog) {
   userWebsite.innerHTML = ''; // clear previous <a> tag if exists
   // if blog is invalid, remove the <a> tag from <li> tag
   if (!validateUrl(blog)) {
-    // differentiate between an empty string or an invalid url
-    // blog === '' ? console.error('No website listed') : console.error('Invalid URL:', blog);
-    userWebsite.textContent = 'Not Specified'; // add text content to <span> tag
+    userWebsite.textContent = 'Not Specified';
   } else {
     // if blog is valid, set the text content and href attribute for <a> tag
     const websiteLink = createAnchorElement(blog, blog); // create <a> tag with href and text content
     userWebsite.appendChild(websiteLink); // append <a> tag to <span> tag
   }
-  userWebsite.parentElement.style.opacity = validateUrl(blog) ? '1' : '0.6'; // set opacity for <li> tag
+  userWebsite.parentElement.style.opacity = validateUrl(blog) ? '1' : '0.8'; // set opacity for <li> tag
 }
 
 // Render user twitter
@@ -149,14 +137,15 @@ function renderUserTwitter(twitter_username) {
     const twitterLink = createAnchorElement(`https://twitter.com/${twitter_username}`, twitter_username); // create <a> tag with href and text content
     userTwitter.appendChild(twitterLink); // append <a> tag to <span> tag
   }
-  userTwitter.parentElement.style.opacity = twitter_username ? '1' : '0.6'; // set opacity for <li> tag
+  // set opacity for <li> tag
+  userTwitter.parentElement.style.opacity = twitter_username ? '1' : '0.8'; 
 }
 
 // Render user company
 function renderUserCompany(company) {
   const userCompany = document.getElementById('gh-user__company');
   userCompany.textContent = company || 'Not specified';
-  userCompany.parentElement.style.opacity = company ? '1' : '0.6'; // set opacity for <li> tag
+  userCompany.parentElement.style.opacity = company ? '1' : '0.8'; // set opacity for <li> tag
 }
 
 
@@ -188,7 +177,6 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
   if (username) {
     fetchGitHubUser(username);
   }
-  // Clear input field after submission
   searchInput.value = '';
 });
 

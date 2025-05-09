@@ -54,8 +54,6 @@ Project Notes
 - Slight update to base colors from design for better A11Y contrast ratio
 - Repositioned alert dialogs for better A11Y compliance
 
-- Run Lighthouse and other accessibility checks
-
 I initially marked up and styled the GitHub User's metadata section using grid and a series of divs before realizing this is very clearly tabular data and a perfect use case for a `table` element. This revision from my initial code was part of an overall re-focus on realigning the app with accessbility best practices.
 
 ```html
@@ -130,7 +128,7 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+- [Example resource 1](https://web.dev/articles/building/a-theme-switch-component) - I leaned heavily into Adam Argyle's approach to handling the light-dark theme switch component of this app. Much of my resulting code draws directly from his solution, with some slight tweaking to align better with this project's particular challenge. 
 - [Beautiful focus outlines](https://medienbaecker.com/articles/focus-outlines) - Great article on creating good looking and accessible focus outlines for interactive elements. Tried some of the approaches in this project.
 
 ## Author
