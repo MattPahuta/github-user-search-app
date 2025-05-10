@@ -1,24 +1,22 @@
 // GitHub User Search App
 const alertMessage = document.getElementById('alertMessage');
+const defaultUser = 'octocat';
 
+// render alert message
 function renderAlert(message = 'Something went wrong') {
   alertMessage.textContent = message;
-  console.log(`Rendering alert: ${message}`);
 }
 
+// fetch data from github api
 async function fetchGitHubUser(username) {
-  // fetch data from github api
   try {
     const res = await fetch(`https://api.github.com/users/${username}`);
     if (res.ok) {
       const data = await res.json();
-      console.log(data);
       renderUserData(data);
     } else if (res.status === 404 && !res.ok) {
-      console.log('404 error...')
       renderAlert('No results');
     } else if (res.status === 403 && !res.ok) {
-      console.log('403 error...')
       renderAlert('API rate limit exceeded');
     }
   } catch (error) {
@@ -27,9 +25,8 @@ async function fetchGitHubUser(username) {
   }
 }
 
-// ToDo: Simplify this validation function
+// Check if the URL is valid
 function validateUrl(url) {
-  // Check if the URL is valid
   const pattern = new RegExp(
     '^(https?:\\/\\/)?' + // protocol
     '((([a-zA-Z\\d]([a-zA-Z\\d-]*[a-zA-Z\\d])*)\\.)+[a-zA-Z]{2,}|' + // domain name
@@ -112,7 +109,7 @@ function renderUserLocation(location) {
 
 // Render user website
 function renderUserWebsite(blog) {
-  const userWebsite = document.getElementById('gh-user__website'); // <span>
+  const userWebsite = document.getElementById('gh-user__website');
   userWebsite.innerHTML = ''; // clear previous <a> tag if exists
   // if blog is invalid, remove the <a> tag from <li> tag
   if (!validateUrl(blog)) {
@@ -127,7 +124,7 @@ function renderUserWebsite(blog) {
 
 // Render user twitter
 function renderUserTwitter(twitter_username) {
-  const userTwitter = document.getElementById('gh-user__twitter'); // <span>
+  const userTwitter = document.getElementById('gh-user__twitter');
   if (userTwitter.childNodes.length > 0) {
     userTwitter.innerHTML = ''; // clear previous <a> tag if exists
   }
@@ -147,7 +144,6 @@ function renderUserCompany(company) {
   userCompany.textContent = company || 'Not specified';
   userCompany.parentElement.style.opacity = company ? '1' : '0.8'; // set opacity for <li> tag
 }
-
 
 // Render user card with data
 async function renderUserData(data) {
@@ -170,7 +166,6 @@ async function renderUserData(data) {
 
 document.getElementById('searchForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  console.log('Form submitted!');
   alertMessage.textContent = ''; // clear any previous errors
   const searchInput = document.getElementById('searchInput');
   const username = searchInput.value.trim();
@@ -182,5 +177,5 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
 
 // Load default user on initial page load
 window.addEventListener('DOMContentLoaded', () => {
-  fetchGitHubUser('octocat');
+  fetchGitHubUser(defaultUser);
 });

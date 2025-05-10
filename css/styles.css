@@ -66,16 +66,13 @@
   :root {
     /* Fonts and Font Sizes */
     --ff-primary: 'Space Mono', monospace;
-
     --fs-300: 0.813rem;
-    /* --fs-400: 0.875rem; */
     --fs-400: 0.938rem;
     --fs-500: 1rem;
     --fs-600: 1.125rem;
     --fs-700: 1.625rem;
     @media (width > 36rem) {
       --fs-300: 0.938rem;
-      /* --fs-400: 1rem; */
       --fs-400: 1.125rem;
       --fs-500: 1.625rem;
       --fs-600: 1.375rem;
@@ -84,7 +81,7 @@
     --clr-white: hsl(0, 0%, 100%);
     --clr-neutral-100: hsl(227, 100%, 98%);
     --clr-neutral-200: hsl(0, 0%, 89%);
-    --clr-neutral-500: hsl(217, 20%, 51%);  
+    --clr-neutral-500: hsl(217, 20%, 51%);
     --clr-neutral-700: hsl(217, 21%, 21%);
     --clr-neutral-800: hsl(220, 40%, 13%);
     --clr-blue-300: hsl(227, 43%, 68%);
@@ -93,19 +90,13 @@
     --clr-blue-600: hsl(217, 35%, 45%);
     --clr-blue-800: hsl(221, 41%, 20%);
     --clr-alert: hsl(0, 92%, 62%);
-    /* light mode svg icons */
-    --clr-svg-icon-fill: var(--clr-blue-600);
-    --clr-svg-icon-fill-dakr: var(--clr-white);
-
     /* box shadow */
     --box-shadow-primary: 0px 16px 30px -10px hsla(227, 46%, 50%, 0.2); /* 0.2 */
-
     /* Focus */
     --focus-outline-color: currentColor;
-    --focus-outline-width: 2.5px;
+    --focus-outline-width: 2.25px;
     --focus-outline-style: solid;
-    --focus-outline-offset: 0.2rem;
-
+    --focus-outline-offset: 0.15rem;
     /* Spacing */
     --spacing-0: 0px;
     --spacing-025: 0.25rem; /* 4px */
@@ -122,22 +113,10 @@
     --spacing-600: 6rem; /* 96px */
     /* Border radius values */
     --radius-0: 0px;
-    --radius-005: 0.313rem; /* 5px */
-    --radius-010: 0.625rem; /* 10px */
-    --radius-015: 0.938rem; /* 15px */
-    --radius-full: 9999px; /* 100% */
-
-    /* light mode - default mode if no user preference */
-    /* --box-shadow: var(--box-shadow-primary);
-    --theme-toggle-clr: var(--clr-neutral-500);
-    --theme-toggle-hover: var(--clr-neutral-800);
-    --background-clr-body: var(--clr-neutral-100);
-    --background-clr-secondary: var(--clr-neutral-100);
-    --background-clr-app: var(--clr-white);
-    --text-clr-primary: var(--clr-blue-600);
-    --text-clr-secondary: var(--clr-neutral-500);
-    --text-clr-accent: var(--clr-neutral-700);
-    --user-profile-clr: var(--clr-blue-300); */
+    --radius-005: 0.313rem;
+    --radius-010: 0.625rem;
+    --radius-015: 0.938rem;
+    --radius-full: 9999px;
   }
 
   *:focus-visible {
@@ -167,14 +146,12 @@
     justify-content: center;
     background-color: var(--background-clr-body);
     color: var(--text-clr-primary);
-
-    transition: all 300ms ease-in-out;
+    transition: all 200ms ease-in-out;
   }
 
   h1.site-title {
     font-size: var(--fs-700);
     color: var(--text-clr-accent);
-
     a {
       text-decoration: none;
       color: inherit;
@@ -212,7 +189,7 @@
   [data-theme='light'] {
     --box-shadow: var(--box-shadow-primary);
     --theme-toggle-clr: var(--clr-neutral-800);
-    --theme-toggle-hover: var(--clr-neutral-600);
+    --theme-toggle-hover: var(--clr-neutral-500);
     --background-clr-body: var(--clr-neutral-100);
     --background-clr-secondary: var(--clr-neutral-100);
     --background-clr-app: var(--clr-white);
@@ -324,7 +301,6 @@
   }
 
   /* Search section */
-
   .search-form,
   .gh-results-grid {
     background-color: var(--background-clr-app);
@@ -578,17 +554,5 @@
 
   .not-available {
     opacity: 0.5;
-  }
-
-  /* Alert styles go here? */
-
-  /* Check usage - delete if unnecessary */
-  .grid-auto-fit {
-    --auto-fit-min-col-size: 225px;
-
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(min(var(--auto-fit-min-col-size), 100%), 1fr)
-    );
   }
 }
