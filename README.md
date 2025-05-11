@@ -36,8 +36,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [FEM Solution URL](https://www.frontendmentor.io/solutions/responsive-web-app-using-css-grid-and-javascript-n8fk2Schxv)
+- [Live Site UR](https://vocal-yeot-39a256.netlify.app/)
 
 ## My process
 
